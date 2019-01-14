@@ -1,0 +1,28 @@
+Cygwin
+
+cygwin\home\(사용자 이름)\SoC_Robot_SW.tar.gz (직접 옮겨줌)		시그윈으로 파일을 옮김
+tar xvzf SoC_(Tab키를 누르면 자동으로 써짐)Robot_SW.tar.gz		압축 해제
+chmod -R 711 SoC_Robot_SW 						권한을 가지게 해줌
+cygwin\home\(사용자 이름)\ae32000-elf-uclibc-tools			시그윈으로 ae32000을 옮김
+cp -rf ae32000 /usr/local/						usr\local로 복사
+tar xzf ae32000								압축 해제
+cd									처음 위치로 이동
+vi .bash_profile (.은 파일 숨김)					쉘 파일 생성
+	PATH="${PATH}:/usr/local/ae32000-uclibc-tools/bin (입력)	쉘 파일 내 입력
+	esc :wq!							파일 저장
+source .bash_profile							소싱
+ae32000-elf-uclibc-gcc -v						버전 확인 (버전 확인이 안되면 쉘 파일 생성에서 오류가 발생한 것)
+
+
+
+
+cd SpC_Robot_SW
+cd user_app/
+ls
+cd Image_load/
+ls
+make clean		컴파일된 필요없는 파일 삭제
+ls
+make			이상한게 막 뜨면 컴파일 완료
+(확장자가 없는 ImageLoad_Test라는 파일이 있음)
+(make clean 후 make를 하여야 함)

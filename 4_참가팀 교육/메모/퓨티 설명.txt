@@ -1,0 +1,38 @@
+Putty
+
+파랑색 USB 장치드라이버 업데이트, 장치 관리자 포트 확인
+Serial 체크
+Serial line : (ex : COM1), Speed : 115200 (고정)
+Saved Sessions, Save : COM3_115200 (이름 예시)
+(동부로봇 (DST Robot) 사이트에서 USB Serial Gender 다운)
+보드 전원을 켜야함
+load 할 경우 login이 뜸
+장치 관리자, 기타 장치, 알 수 없는 장치, 드라이버 업데이트, 밑에꺼 찾아보기, 밑에꺼 장치선택, 
+	모든 장치표시(다음), 디스크 있음, 찾아보기, C\cygwin\home\(사용자 이름)\SoC_Robot\USB_Driver\EAGLE USB Device, 밑에꺼 확인 됌
+cygwin\home\(사용자 이름)\SoC_Robot\Eagle_Downloader
+	> Device status : Connected
+
+끄고 키자마자 putty 엔터
+	> Eagle # (usb_download 입력)
+(Eagle)nand_boot\output\Nandboot(...).bin
+
+ae32000s login : (root 입력)
+cd /mnt/f0	// 플레시 메모리 지역 (파일이 지워지지 않음)
+mkdir dev module
+cd dev module
+usb_download image_process.o
+user_init	// vi 에디터로 작성, 부팅되자마자 명령어가 실행되게 해줌
+	> #:/bin/an
+	/(...)image.o
+
+usb_download
+	// USB BULK Download program
+	(Eagle) > user_app\Image_Test		// Download
+chmod 777 aaa					// 모든 권한 다 주기
+
+
+./aaa -dp
+
+(Eagle) robotbody
+chnod 777 robotbody
+./robotbody
